@@ -1,15 +1,10 @@
-[theme]
-base = "dark"
-primaryColor = "#FBBF24"
-backgroundColor = "#000000"
-secondaryBackgroundColor = "#0A0A0A"
-textColor = "#F4E4BC"
-font = "serif"
+import streamlit as st
+import streamlit.components.v1 as components
+from pathlib import Path
 
-[server]
-maxUploadSize = 200
-enableCORS = false
-enableXsrfProtection = true
+st.set_page_config(page_title="Truva Savaşı", page_icon="⚔️", layout="wide", initial_sidebar_state="collapsed")
 
-[browser]
-gatherUsageStats = false
+st.markdown("<style>#MainMenu,footer,header{visibility:hidden;}.block-container{padding:0!important;max-width:100%!important;}iframe{border:none!important;}</style>", unsafe_allow_html=True)
+
+html_content = (Path(__file__).parent / "truva.html").read_text(encoding="utf-8")
+components.html(html_content, height=900, scrolling=False)
